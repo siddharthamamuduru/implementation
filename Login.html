@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN page</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: darkgrey;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #container{
+            background-color: beige;
+            padding: 10px;
+            box-shadow: 5px 5px 5px 5px black;
+            border-radius: 6px;
+        }
+        #container >#loginForm{
+            width: 300px;
+            text-align: center;
+            align-items: center;
+        }
+        input{
+            margin: 15px 0;
+            width: 80%;
+            padding: 8px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<h1>LOGIN PAGE</h1>
+
+<body>
+    <div id="container">
+        <form id="loginForm">
+            <input type="email" placeholder="email" id="loginEmail" required>
+            <input type="password" placeholder="Password" id="loginPassword" required>
+            <button>Login Up</button>
+        </form>
+    </div>
+    <script>
+        let loginEmail = document.getElementById("loginEmail")
+        let loginPassword = document.getElementById("loginPassword")
+        const loginFormSubmitBtn = document.getElementById("loginForm")
+        loginFormSubmitBtn.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const loginEmailValue = loginEmail.value.trim()
+            const loginPasswordValue = loginPassword.value.trim()
+            console.log(loginEmailValue, loginPasswordValue)
+
+            const allusers = JSON.parse(localStorage.getItem("allusers"))
+            console.log(allusers, "in login page")
+
+            const userFound = allusers.find(x => x.email === loginEmailValue && x.password === loginPasswordValue)
+            console.log(userFound, " user fiund")
+            if (userFound) {
+                localStorage.setItem("loggedInUser", JSON.stringify(userFound))
+                window.location.href = "Dashboard.html"
+
+            } else {
+                alert("no proper used foiund with your credentials entered")
+            }
+
+        })
+    </script>
+</body>
+
+</html>

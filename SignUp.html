@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP PAGE</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: darkgrey;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            background-color: beige;
+            padding: 10px;
+            box-shadow: 5px 5px 5px 5px black;
+            border-radius: 6px;
+        }
+
+        #signupForms {
+            width: 300px;
+            text-align: center;
+        }
+
+        input {
+            margin: 15px 0;
+            width: 80%;
+            padding: 8px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<h1>SIGNUP PAGE</h1>
+
+<body>
+    <div id="container">
+        <form id="signupForms">
+            <input type="text" placeholder="name" id="name" required>
+            <input type="email" placeholder="email" id="email" required>
+            <input type="password" placeholder="password" id="password" required>
+            <button type="submit">signup</button>
+        </form>
+    </div>
+    <script>
+        let allusers = JSON.parse(localStorage.getItem("allusers")) || []
+        let signupName = document.getElementById("name")
+        let signupEmail = document.getElementById("email")
+        let signupPassword = document.getElementById("password")
+        let signupFormSubmitBtn = document.getElementById("signupForms")
+        signupFormSubmitBtn.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let signupNameValue = signupName.value.trim()
+            let signupEmailValue = signupEmail.value.trim()
+            let signupPasswordValue = signupPassword.value.trim()
+
+
+            let allsignupuserDetails = {
+                name: signupNameValue,
+                email: signupEmailValue,
+                password: signupPasswordValue
+            }
+            const existuser = allusers.find(x => x.email === signupEmailValue)
+            if (existuser) {
+                return alert("allready user email exist try another one")
+            }
+            allusers.push(allsignupuserDetails)
+            localStorage.setItem("allusers", JSON.stringify(allusers))
+            alert("signup done going to login page")
+            window.location.href = "Login.html"
+
+        })
+    </script>
+</body>
+
+</html>

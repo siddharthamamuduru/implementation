@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document</title>
+  <style>
+    body {
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      background-color: darkgrey;
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    #profiles {
+      gap: 20px;
+      margin: auto;;
+    }
+
+    /* #profiles >a{
+      text-decoration: none;
+      padding: 10px;
+      box-shadow: 3px 3px 4px;
+
+    } */
+  </style>
+</head>
+
+<body>
+  <h1> HI SIDDU </h1>
+  <div id="profiles">
+    <a href="https://www.linkedin.com/feed/" target="_blank"><img src="linkedinicons.png" alt="" width="50px"></a>
+    <a href="https://github.com/" target="_blank"><img src="github.png" alt="" width="50px"></a>
+    <a href="https://www.geeksforgeeks.org/html-interview-questions/" target="_blank"><img src="html.png" alt="" width="50px"></a>
+    <a href="https://www.geeksforgeeks.org/css-interview-questions/" target="_blank"><img src="css.png" alt="" width="50px"></a>
+    <a href="https://www.geeksforgeeks.org/javascript-interview-questions/" target="_blank"><img src="js.png" alt="" width="50px"></a>
+  </div>
+  <button type="submit">logout</button>
+  <script>
+    let btn = document.querySelector("button")
+    btn.addEventListener("click", () => {
+      window.location.href = "Login.html"
+    })
+  </script>
+</body>
+
+</html>
